@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ZizoDigitalStudio | Cookbooks, Meal Planners & Digital Kitchen Guides</title>
+  <meta name="description" content="Explore beautiful digital cookbooks, meal planners, printable guides, and Google Sheets tools designed to make cooking and kitchen organization easier.">
+  <meta name="theme-color" content="#173f35">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23f8f1e6'/%3E%3Cpath d='M17 18h25L21 45h26' fill='none' stroke='%23173f35' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M42 16c8-4 12 1 7 8-6 7-13 5-13 5s0-7 6-13Z' fill='%2393a98f'/%3E%3C/svg%3E">
+  <style>
+    :root{
+      --cream:#fbf6ee;--paper:#fffdf9;--forest:#173f35;--forest-2:#24564a;
+      --sage:#dce5d8;--sage-dark:#718a73;--terracotta:#b9684e;--clay:#e7c7b8;
+      --gold:#bd9249;--ink:#23302b;--muted:#6f7772;--line:#e5ded2;
+      --shadow:0 18px 50px rgba(35,48,43,.09);--radius:26px;--serif:"Playfair Display",Georgia,serif;
+      --sans:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6}
+    img{display:block;max-width:100%}a{color:inherit}.skip{position:absolute;left:-999px;top:10px;background:var(--forest);color:#fff;padding:.7rem 1rem;z-index:999}.skip:focus{left:10px}
+    .container{width:min(1160px,calc(100% - 40px));margin:auto}.eyebrow{display:inline-flex;align-items:center;gap:.55rem;text-transform:uppercase;letter-spacing:.15em;font-size:.76rem;font-weight:700;color:var(--terracotta)}
+    .eyebrow:before{content:"";width:28px;height:1px;background:currentColor}.section{padding:96px 0}.section-head{max-width:720px;margin-bottom:40px}.section-head.center{text-align:center;margin:0 auto 46px}.section-head.center .eyebrow{justify-content:center}
+    h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:var(--serif);line-height:1.12;color:var(--forest)}h1{font-size:clamp(3.1rem,6vw,6.2rem);letter-spacing:-.045em;margin-bottom:24px}h2{font-size:clamp(2.2rem,4vw,4rem);letter-spacing:-.035em;margin-bottom:18px}h3{font-size:1.35rem;margin-bottom:10px}.lead{font-size:clamp(1.06rem,1.5vw,1.22rem);color:#59625d;max-width:650px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;border-radius:999px;padding:.9rem 1.25rem;text-decoration:none;font-weight:700;border:1px solid transparent;transition:.25s ease;min-height:48px}
+    .btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--forest);color:#fff;box-shadow:0 9px 26px rgba(23,63,53,.2)}.btn-primary:hover{background:var(--forest-2)}.btn-secondary{background:rgba(255,255,255,.75);color:var(--forest);border-color:rgba(23,63,53,.2)}.btn-secondary:hover{background:#fff}
+    .btn-small{padding:.72rem 1rem;min-height:42px;font-size:.92rem}.arrow{font-size:1.15em;line-height:1}.pill{display:inline-flex;align-items:center;gap:.45rem;border:1px solid rgba(23,63,53,.14);background:rgba(255,255,255,.7);border-radius:999px;padding:.45rem .75rem;color:var(--forest);font-size:.82rem;font-weight:700}
+    header{position:sticky;top:0;z-index:50;background:rgba(251,246,238,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(23,63,53,.08)}.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--forest);font-family:var(--serif);font-weight:700;font-size:1.22rem}
+    .brand-mark{width:42px;height:42px;border-radius:14px;background:var(--forest);display:grid;place-items:center;color:var(--cream);font-family:var(--serif);font-size:1.35rem;position:relative;box-shadow:0 8px 18px rgba(23,63,53,.18)}.brand-mark:after{content:"";position:absolute;width:10px;height:6px;background:var(--sage);border-radius:100% 0 100% 0;right:6px;top:7px;transform:rotate(-20deg)}
+    nav ul{list-style:none;display:flex;align-items:center;gap:28px;padding:0;margin:0}nav a{text-decoration:none;color:#3f4d46;font-size:.94rem;font-weight:600}nav a:hover{color:var(--terracotta)}.menu-btn{display:none;border:1px solid var(--line);background:var(--paper);color:var(--forest);width:44px;height:44px;border-radius:14px;font-size:1.25rem}
+    .hero{padding:72px 0 74px;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:64px}.hero-copy{position:relative}.hero-copy:before{content:"";position:absolute;left:-60px;top:-50px;width:130px;height:130px;border:1px solid rgba(189,146,73,.24);border-radius:50%;z-index:-1}.hero .eyebrow{margin-bottom:17px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}.hero-note{display:flex;align-items:center;gap:10px;margin-top:25px;color:var(--muted);font-size:.9rem}.hero-note svg{color:var(--terracotta)}
+    .hero-visual{position:relative}.hero-frame{border-radius:38px 38px 90px 38px;overflow:hidden;border:10px solid rgba(255,255,255,.86);box-shadow:var(--shadow);background:#e8dfd1;aspect-ratio:1.02/1}.hero-frame img{width:100%;height:100%;object-fit:cover}.floating-card{position:absolute;left:-36px;bottom:32px;background:rgba(255,253,249,.94);backdrop-filter:blur(10px);border:1px solid rgba(23,63,53,.1);border-radius:18px;padding:15px 18px;box-shadow:0 18px 40px rgba(35,48,43,.16);max-width:215px}.floating-card strong{display:block;color:var(--forest);font-family:var(--serif);font-size:1.12rem}.floating-card span{font-size:.8rem;color:var(--muted)}.gold-dot{position:absolute;right:-20px;top:34px;width:62px;height:62px;border-radius:50%;background:var(--gold);opacity:.9;z-index:-1}
+    .trust-strip{background:var(--forest);color:#f7f1e8}.trust-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.14)}.trust-item{padding:22px;background:var(--forest);display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;font-weight:600;font-size:.92rem}.trust-icon{color:#e2bd7a;font-size:1.15rem}
+    .collections{background:var(--paper)}.collection-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.collection-card{min-height:255px;padding:27px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#fff,var(--cream));text-decoration:none;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:.25s ease}.collection-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(185,104,78,.28)}.collection-card:nth-child(1){grid-column:span 2;background:linear-gradient(135deg,#204b3f,#173f35);color:#fff}.collection-card:nth-child(1) h3,.collection-card:nth-child(1) .collection-link{color:#fff}.collection-card:nth-child(1) p{color:#dbe7df}.collection-card:nth-child(7){grid-column:span 2;background:linear-gradient(135deg,#f1ddd4,#fbf6ee)}.category-icon{width:52px;height:52px;border-radius:17px;background:var(--sage);display:grid;place-items:center;color:var(--forest);font-size:1.45rem;margin-bottom:30px}.collection-card:nth-child(1) .category-icon{background:rgba(255,255,255,.12);color:#fff}.collection-card p{color:var(--muted);font-size:.93rem;margin-bottom:24px}.collection-link{margin-top:auto;font-weight:700;color:var(--terracotta);font-size:.9rem}.collection-art{position:absolute;width:110px;height:145px;right:23px;top:24px;background:#f8f0e6;border-radius:7px;box-shadow:0 16px 28px rgba(0,0,0,.2);transform:rotate(6deg);border:1px solid rgba(255,255,255,.5);display:grid;place-items:center;color:var(--forest);font-family:var(--serif);text-align:center;padding:14px;font-size:.85rem;line-height:1.2}.collection-card:nth-child(1) .collection-copy{max-width:54%}
+    .products{background:var(--cream)}.product-group+ .product-group{margin-top:78px}.group-title{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}.group-title h3{font-size:clamp(1.65rem,2.8vw,2.35rem);margin:0}.group-title a{color:var(--terracotta);font-weight:700;text-underline-offset:5px}
+    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.product-card{background:var(--paper);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 8px 28px rgba(35,48,43,.045);display:flex;flex-direction:column;transition:.25s ease}.product-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.cover-zone{min-height:260px;padding:25px;background:linear-gradient(145deg,#e8e2d6,#dce5d8);display:grid;place-items:center;position:relative;overflow:hidden}.cover-zone:before{content:"";position:absolute;width:190px;height:190px;border:1px solid rgba(255,255,255,.72);border-radius:50%;left:-45px;top:-70px}.cover-zone.christmas{background:linear-gradient(145deg,#d5e0d5,#8fa68f)}.cover-zone.cookbook{background:linear-gradient(145deg,#f0d6c9,#dca486)}.cover-zone.planner{background:linear-gradient(145deg,#e5e9dd,#c5d4c3)}.cover-mock{width:146px;aspect-ratio:.72;background:var(--paper);border-radius:7px;box-shadow:0 20px 35px rgba(35,48,43,.22);transform:rotate(-3deg);position:relative;padding:18px 14px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(255,255,255,.7)}.cover-mock:after{content:"DIGITAL EDITION";font-size:.56rem;letter-spacing:.12em;color:var(--terracotta);font-weight:700}.cover-mock strong{font-family:var(--serif);color:var(--forest);font-size:1.02rem;line-height:1.15}.cover-mock small{color:var(--muted);font-size:.66rem;line-height:1.3}.cover-tag{position:absolute;top:16px;left:16px;background:rgba(255,255,255,.9);border-radius:999px;padding:.38rem .62rem;font-size:.7rem;font-weight:700;color:var(--forest)}.replace-note{position:absolute;right:14px;bottom:12px;font-size:.67rem;color:rgba(35,48,43,.55);background:rgba(255,255,255,.65);padding:.28rem .48rem;border-radius:8px}
+    .product-body{padding:24px;display:flex;flex-direction:column;flex:1}.product-body h4{font-family:var(--serif);font-size:1.28rem;line-height:1.25;color:var(--forest);margin:0 0 10px}.product-body>p{color:var(--muted);font-size:.92rem;line-height:1.55;margin-bottom:15px}.benefits{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:6px}.benefits li{font-size:.84rem;color:#47544e;padding-left:18px;position:relative}.benefits li:before{content:"✓";position:absolute;left:0;color:var(--terracotta);font-weight:800}.product-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto}.download-note{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--sage-dark);font-weight:800}
+    .why{background:var(--forest);color:#edf4ef;position:relative;overflow:hidden}.why:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-120px;top:-180px}.why h2{color:#fff}.why .lead{color:#cbd9d0}.why-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:center}.why-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}.why-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:24px}.why-card .icon{font-size:1.4rem;color:#e6bf79;margin-bottom:16px}.why-card h3{font-family:var(--sans);font-size:1rem;color:#fff;margin-bottom:7px}.why-card p{font-size:.86rem;color:#cbd9d0;margin:0}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.brand-panel{background:linear-gradient(145deg,#efd5c8,#fbf6ee);border-radius:34px;min-height:450px;display:grid;place-items:center;position:relative;overflow:hidden}.brand-panel:before,.brand-panel:after{content:"";position:absolute;border-radius:50%}.brand-panel:before{width:260px;height:260px;background:rgba(255,255,255,.48);left:-80px;top:-70px}.brand-panel:after{width:190px;height:190px;border:1px solid rgba(23,63,53,.15);right:-35px;bottom:-40px}.big-mark{width:180px;height:180px;border-radius:52px;background:var(--forest);display:grid;place-items:center;color:var(--cream);font-family:var(--serif);font-size:5.2rem;box-shadow:0 26px 50px rgba(23,63,53,.22);position:relative;z-index:2}.big-mark:after{content:"";position:absolute;width:39px;height:22px;background:var(--sage);border-radius:100% 0 100% 0;right:24px;top:30px;transform:rotate(-22deg)}.about-copy p{color:var(--muted);font-size:1.03rem}.signature{font-family:var(--serif);color:var(--terracotta);font-size:1.25rem;margin-top:26px}
+    .freebie{padding:0 0 96px}.freebie-card{background:var(--paper);border:1px solid var(--line);border-radius:32px;padding:52px;display:grid;grid-template-columns:1.4fr .6fr;gap:40px;align-items:center;box-shadow:var(--shadow)}.freebie-card h2{font-size:clamp(2rem,3.3vw,3.2rem)}.freebie-card p{color:var(--muted);max-width:620px}.freebie-actions{display:flex;justify-content:flex-end}.btn-disabled{background:#e5e1d9;color:#777;cursor:not-allowed;border-color:#d5d0c8}
+    .final-cta{padding:95px 0;background:linear-gradient(135deg,#ead4c7,#f7eadf);text-align:center}.final-cta h2{max-width:780px;margin:0 auto 18px}.final-cta p{max-width:630px;margin:0 auto 30px;color:#5d665f}
+    footer{background:#102f28;color:#dbe5df;padding:50px 0 24px}.footer-grid{display:grid;grid-template-columns:1.25fr .75fr .75fr;gap:50px;padding-bottom:38px}.footer-brand p{max-width:390px;color:#aebfb5;font-size:.92rem}.footer-brand .brand{color:#fff;margin-bottom:16px}.footer-title{font-family:var(--sans);color:#fff;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}.footer-links{display:grid;gap:10px}.footer-links a{color:#bdccc3;text-decoration:none;font-size:.9rem}.footer-links a:hover{color:#fff}.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;gap:20px;color:#90a69a;font-size:.78rem}
+    @media(max-width:980px){.hero-grid,.why-grid,.about-grid{grid-template-columns:1fr}.hero-copy{max-width:760px}.hero-visual{max-width:720px}.collection-grid{grid-template-columns:repeat(2,1fr)}.product-grid{grid-template-columns:repeat(2,1fr)}.why-grid{gap:40px}.about-grid{gap:42px}.about-copy{order:-1}.freebie-card{grid-template-columns:1fr}.freebie-actions{justify-content:flex-start}}
+    @media(max-width:760px){.container{width:min(100% - 28px,1160px)}.section{padding:72px 0}.nav{height:70px}.menu-btn{display:grid;place-items:center}nav{position:absolute;left:14px;right:14px;top:76px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:10px;box-shadow:var(--shadow);display:none}nav.open{display:block}nav ul{display:grid;gap:4px}nav a{display:block;padding:11px 13px;border-radius:12px}nav a:hover{background:var(--cream)}.nav-shop{display:none}.hero{padding:48px 0 58px}.hero-grid{gap:38px}h1{font-size:clamp(2.8rem,14vw,4.5rem)}.hero-frame{border-radius:28px 28px 58px 28px}.floating-card{left:12px;bottom:12px}.gold-dot{right:3px}.trust-row{grid-template-columns:1fr 1fr}.collection-grid{grid-template-columns:1fr}.collection-card:nth-child(1),.collection-card:nth-child(7){grid-column:auto}.collection-card:nth-child(1) .collection-copy{max-width:58%}.product-grid{grid-template-columns:1fr}.group-title{align-items:flex-start;flex-direction:column}.why-cards{grid-template-columns:1fr}.brand-panel{min-height:340px}.freebie-card{padding:32px 24px}.footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:span 2}.footer-bottom{flex-direction:column}}
+    @media(max-width:440px){.brand-text{font-size:1rem}.hero-actions .btn{width:100%}.trust-row{grid-template-columns:1fr}.collection-card:nth-child(1) .collection-copy{max-width:100%}.collection-art{opacity:.17}.footer-grid{grid-template-columns:1fr}.footer-brand{grid-column:auto}.product-footer{align-items:flex-start;flex-direction:column}.product-footer .btn{width:100%}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to products</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="ZizoDigitalStudio home"><span class="brand-mark">Z</span><span class="brand-text">ZizoDigitalStudio</span></a>
+      <button class="menu-btn" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#why">Why Zizo</a></li>
+          <li><a href="#about">Our Story</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn-primary btn-small nav-shop" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">Visit Etsy <span class="arrow">↗</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Recipes · Meal Plans · Printable Guides</span>
+          <h1>Better kitchens.<br>Happier days.</h1>
+          <p class="lead">Beautiful digital cookbooks, practical planners, and easy-to-use tools created to make cooking, organizing, and family life feel a little simpler.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#products">Explore the collection <span class="arrow">↓</span></a>
+            <a class="btn btn-secondary" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">Browse our Etsy shop <span class="arrow">↗</span></a>
+          </div>
+          <div class="hero-note">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Digital products for instant, convenient access—no physical item is shipped.
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="gold-dot"></div>
+          <div class="hero-frame"><img src="assets/zizo-hero.png" alt="Digital meal planner and cookbook mockups arranged on a warm kitchen table"></div>
+          <div class="floating-card"><strong>Made for real life</strong><span>Clear, practical resources for busy homes.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Shop qualities">
+      <div class="container trust-row">
+        <div class="trust-item"><span class="trust-icon">✦</span> Instant digital access</div>
+        <div class="trust-item"><span class="trust-icon">✦</span> Clear & easy to use</div>
+        <div class="trust-item"><span class="trust-icon">✦</span> Beautifully organized</div>
+        <div class="trust-item"><span class="trust-icon">✦</span> Made for home life</div>
+      </div>
+    </section>
+
+    <section class="section collections" id="collections">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Shop by collection</span>
+          <h2>Find something made for your moment.</h2>
+          <p class="lead">From cozy holiday recipes to smart kitchen systems, explore practical digital resources by category.</p>
+        </div>
+        <div class="collection-grid">
+          <a class="collection-card" href="#christmas">
+            <div class="collection-copy"><div class="category-icon">✦</div><h3>Christmas Collection</h3><p>Festive cookbooks and thoughtful planning tools for a more joyful holiday season.</p><span class="collection-link">Explore collection →</span></div>
+            <div class="collection-art" aria-hidden="true">A COZY<br>CHRISTMAS<br>COLLECTION</div>
+          </a>
+          <a class="collection-card" href="#cookbooks"><div class="category-icon">♨</div><h3>Cookbooks</h3><p>Flavorful recipe collections for everyday meals and special occasions.</p><span class="collection-link">View products →</span></a>
+          <a class="collection-card" href="#planners"><div class="category-icon">▦</div><h3>Meal Planners</h3><p>Simple tools that turn meal decisions into an organized weekly rhythm.</p><span class="collection-link">View products →</span></a>
+          <a class="collection-card" href="#planners"><div class="category-icon">⌘</div><h3>Google Sheets Planners</h3><p>Flexible digital systems for groceries, recipes, budgets, and more.</p><span class="collection-link">View products →</span></a>
+          <a class="collection-card" href="#planners"><div class="category-icon">⌂</div><h3>Kitchen Organization</h3><p>Bring your pantry, freezer, shopping, and meal prep into one clear system.</p><span class="collection-link">View products →</span></a>
+          <a class="collection-card" href="#products"><div class="category-icon">☷</div><h3>Printable Guides</h3><p>Clean, practical reference pages designed to print beautifully.</p><span class="collection-link">Browse guides →</span></a>
+          <a class="collection-card" href="#cookbooks"><div class="category-icon">❧</div><h3>Wellness & Herbal Recipes</h3><p>Gentle recipe inspiration featuring herbs, warming drinks, and nourishing ingredients.</p><span class="collection-link">Explore recipes →</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section products" id="products">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">Featured digital products</span>
+          <h2>Practical favorites, beautifully presented.</h2>
+          <p class="lead">Choose a product below to view the full description, included files, and current details on Etsy.</p>
+        </div>
+
+        <div class="product-group" id="christmas">
+          <div class="group-title"><h3>Christmas Collection</h3><a href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">See all on Etsy ↗</a></div>
+          <div class="product-grid">
+            <!-- Replace each .cover-zone with your product-cover <img>, and replace the Etsy shop URL with the exact listing URL. -->
+            <article class="product-card">
+              <div class="cover-zone christmas"><span class="cover-tag">150 recipes</span><div class="cover-mock"><strong>Christmas Appetizers</strong><small>Party foods, dips & finger foods</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>Christmas Appetizer Cookbook</h4><p>A festive collection of easy party foods, shareable dips, bites, and finger foods.</p><ul class="benefits"><li>150 holiday-ready recipes</li><li>Party-friendly variety</li><li>Printable PDF format</li></ul><div class="product-footer"><span class="download-note">Digital download</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">View on Etsy ↗</a></div></div>
+            </article>
+            <article class="product-card">
+              <div class="cover-zone christmas"><span class="cover-tag">Holiday favorite</span><div class="cover-mock"><strong>Christmas Cookie Cookbook</strong><small>Classic cookies, bars & festive treats</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>Christmas Cookie Cookbook</h4><p>A joyful baking collection filled with classic cookies, bars, biscotti, and festive treats.</p><ul class="benefits"><li>Traditional & creative ideas</li><li>Perfect for cookie season</li><li>Easy digital reference</li></ul><div class="product-footer"><span class="download-note">Instant download</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">See details ↗</a></div></div>
+            </article>
+            <article class="product-card">
+              <div class="cover-zone christmas"><span class="cover-tag">Festive baking</span><div class="cover-mock"><strong>Christmas Baking Cookbook</strong><small>Cakes, pies, breads & desserts</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>Christmas Baking Cookbook</h4><p>Cozy cakes, pies, breads, muffins, and desserts gathered for the holiday table.</p><ul class="benefits"><li>Wide holiday selection</li><li>Warm seasonal inspiration</li><li>Printable PDF cookbook</li></ul><div class="product-footer"><span class="download-note">Digital download</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">Open listing ↗</a></div></div>
+            </article>
+            <article class="product-card">
+              <div class="cover-zone planner"><span class="cover-tag">Google Sheets</span><div class="cover-mock"><strong>Christmas Shopping List</strong><small>Gifts, budget & holiday checklist</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>Christmas Shopping List</h4><p>Track gifts, ideas, recipients, spending, and shopping progress in one organized sheet.</p><ul class="benefits"><li>Gift list at a glance</li><li>Budget-friendly tracking</li><li>Easy to update anywhere</li></ul><div class="product-footer"><span class="download-note">Google Sheets</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">View on Etsy ↗</a></div></div>
+            </article>
+            <article class="product-card">
+              <div class="cover-zone planner"><span class="cover-tag">Google Sheets</span><div class="cover-mock"><strong>Christmas Budget Planner</strong><small>Plan, spend & stay on track</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>Christmas Budget Planner</h4><p>A calm, clear way to plan holiday spending across gifts, food, décor, and events.</p><ul class="benefits"><li>Planned vs. actual spending</li><li>Clear budget overview</li><li>Reusable digital format</li></ul><div class="product-footer"><span class="download-note">Google Sheets</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">See full listing ↗</a></div></div>
+            </article>
+            <article class="product-card">
+              <div class="cover-zone planner"><span class="cover-tag">Gift exchange</span><div class="cover-mock"><strong>Secret Santa Planner</strong><small>Names, gifts, ideas & budget</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>Secret Santa Planner</h4><p>Keep participants, gift ideas, preferences, and spending organized for an easier exchange.</p><ul class="benefits"><li>Simple participant tracker</li><li>Gift ideas & budgets</li><li>Holiday-ready layout</li></ul><div class="product-footer"><span class="download-note">Google Sheets</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">Explore product ↗</a></div></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-group" id="cookbooks">
+          <div class="group-title"><h3>Cookbooks</h3><a href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">Browse cookbooks ↗</a></div>
+          <div class="product-grid">
+            <article class="product-card">
+              <div class="cover-zone cookbook"><span class="cover-tag">150 recipes</span><div class="cover-mock"><strong>Mediterranean Cookbook</strong><small>30-day meal plan included</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>Mediterranean Cookbook & Meal Plan</h4><p>A generous Mediterranean recipe collection paired with a practical 30-day plan.</p><ul class="benefits"><li>150 varied recipes</li><li>30-day meal plan</li><li>Food & grocery guidance</li></ul><div class="product-footer"><span class="download-note">Printable PDF</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">View on Etsy ↗</a></div></div>
+            </article>
+            <article class="product-card">
+              <div class="cover-zone cookbook"><span class="cover-tag">225 recipes</span><div class="cover-mock"><strong>Vegetarian Cookbook</strong><small>Easy plant-based favorites</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>Vegetarian Cookbook</h4><p>Everyday plant-based meals designed for variety, convenience, and family-friendly cooking.</p><ul class="benefits"><li>225 easy recipes</li><li>Plant-based meal ideas</li><li>Organized digital format</li></ul><div class="product-footer"><span class="download-note">Digital download</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">See details ↗</a></div></div>
+            </article>
+            <article class="product-card">
+              <div class="cover-zone cookbook"><span class="cover-tag">150 recipes</span><div class="cover-mock"><strong>Historical Survival Cookbook</strong><small>Pantry-wise recipes from history</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>Historical Survival Cookbook</h4><p>A practical collection inspired by Depression-era, ration-era, and pantry-based cooking.</p><ul class="benefits"><li>Resourceful recipe ideas</li><li>Pantry-focused inspiration</li><li>Historical food context</li></ul><div class="product-footer"><span class="download-note">Printable PDF</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">Open listing ↗</a></div></div>
+            </article>
+            <article class="product-card">
+              <div class="cover-zone cookbook"><span class="cover-tag">Family recipes</span><div class="cover-mock"><strong>Traditional Soul Food</strong><small>Comforting family meals</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>African American Traditional Recipes</h4><p>A warm collection of comforting dishes inspired by traditional family-style cooking.</p><ul class="benefits"><li>Flavorful family meals</li><li>Comfort-food inspiration</li><li>Easy digital access</li></ul><div class="product-footer"><span class="download-note">Digital download</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">View on Etsy ↗</a></div></div>
+            </article>
+            <article class="product-card">
+              <div class="cover-zone cookbook"><span class="cover-tag">50 recipes</span><div class="cover-mock"><strong>Herbal Drinks</strong><small>Detox, immunity & wellness-inspired recipes</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>Easy Natural Herbal Drink Recipes</h4><p>A beautiful collection of herbal teas, tonics, infusions, and refreshing wellness-inspired drinks.</p><ul class="benefits"><li>50 approachable recipes</li><li>Hot & cold drink ideas</li><li>Simple ingredient guidance</li></ul><div class="product-footer"><span class="download-note">Printable PDF</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">Explore product ↗</a></div></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-group" id="planners">
+          <div class="group-title"><h3>Planners & Google Sheets</h3><a href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">Browse planners ↗</a></div>
+          <div class="product-grid">
+            <article class="product-card">
+              <div class="cover-zone planner"><span class="cover-tag">Meal planning</span><div class="cover-mock"><strong>Meal Prep + Recipes</strong><small>Plan, organize & prepare</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>Meal Prep Planner + Recipe Organizer</h4><p>Bring recipes, prep tasks, ingredients, and weekly meals into one coordinated space.</p><ul class="benefits"><li>Weekly meal planning</li><li>Recipe organization</li><li>Prep-day clarity</li></ul><div class="product-footer"><span class="download-note">Google Sheets</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">View on Etsy ↗</a></div></div>
+            </article>
+            <article class="product-card">
+              <div class="cover-zone planner"><span class="cover-tag">10 in 1</span><div class="cover-mock"><strong>Ultimate Kitchen System</strong><small>10 connected organizers</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>Ultimate Kitchen Organization Bundle</h4><p>A premium all-in-one system for meals, recipes, groceries, budgets, and food storage.</p><ul class="benefits"><li>10 coordinated organizers</li><li>Kitchen overview dashboard</li><li>High-value complete system</li></ul><div class="product-footer"><span class="download-note">Google Sheets</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">See full listing ↗</a></div></div>
+            </article>
+            <article class="product-card">
+              <div class="cover-zone planner"><span class="cover-tag">Automated</span><div class="cover-mock"><strong>Smart Meal Planner</strong><small>Plan meals & groceries faster</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>Automated Meal Planner</h4><p>A flexible digital planner that helps turn selected meals into a clearer weekly plan.</p><ul class="benefits"><li>Fast weekly planning</li><li>Organized recipe choices</li><li>Reusable every week</li></ul><div class="product-footer"><span class="download-note">Google Sheets</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">Explore product ↗</a></div></div>
+            </article>
+            <article class="product-card">
+              <div class="cover-zone planner"><span class="cover-tag">Food storage</span><div class="cover-mock"><strong>Pantry + Expiration</strong><small>Know what you have</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>Pantry Inventory & Expiration Tracker</h4><p>Track pantry quantities, dates, estimated value, and restock needs with less guesswork.</p><ul class="benefits"><li>Inventory at a glance</li><li>Expiration-date tracking</li><li>Restock reminders</li></ul><div class="product-footer"><span class="download-note">Google Sheets</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">Open listing ↗</a></div></div>
+            </article>
+            <article class="product-card">
+              <div class="cover-zone planner"><span class="cover-tag">Inventory + meals</span><div class="cover-mock"><strong>Freezer Planner</strong><small>Track food & plan meals</small></div><span class="replace-note">Cover image area</span></div>
+              <div class="product-body"><h4>Freezer Inventory + Meal Planner</h4><p>See what is frozen, reduce forgotten food, and plan meals around what you already own.</p><ul class="benefits"><li>Freezer inventory control</li><li>Date & quantity tracking</li><li>Pantry-first meal planning</li></ul><div class="product-footer"><span class="download-note">Google Sheets</span><a class="btn btn-primary btn-small" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">View on Etsy ↗</a></div></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why" id="why">
+      <div class="container why-grid">
+        <div>
+          <span class="eyebrow" style="color:#e5bd76">Designed with care</span>
+          <h2>Useful first. Beautiful always.</h2>
+          <p class="lead">Every ZizoDigitalStudio product is made to bring clarity, inspiration, and a little more ease to everyday home life.</p>
+        </div>
+        <div class="why-cards">
+          <div class="why-card"><div class="icon">↓</div><h3>Instant digital access</h3><p>Start using your files after purchase—no physical delivery to wait for.</p></div>
+          <div class="why-card"><div class="icon">✓</div><h3>Easy to understand</h3><p>Thoughtful structure and clear layouts help you find what you need quickly.</p></div>
+          <div class="why-card"><div class="icon">✦</div><h3>Practical, polished design</h3><p>Resources made to look lovely while doing a real job in your kitchen.</p></div>
+          <div class="why-card"><div class="icon">⌂</div><h3>Made for busy homes</h3><p>Flexible tools for planning, cooking, organizing, and thoughtful gifting.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="brand-panel" aria-hidden="true"><div class="big-mark">Z</div></div>
+        <div class="about-copy">
+          <span class="eyebrow">About the studio</span>
+          <h2>Digital tools with a warm, human touch.</h2>
+          <p>ZizoDigitalStudio creates beautiful cookbooks, meal planners, printable guides, and Google Sheets systems to make everyday life easier, more organized, and more enjoyable.</p>
+          <p>Each product is designed around practical home needs—from deciding what to cook and tracking your pantry to preparing for the holidays with less stress.</p>
+          <p class="signature">Good food · Happier days</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="freebie" aria-labelledby="freebie-title">
+      <div class="container">
+        <div class="freebie-card">
+          <div><span class="eyebrow">A little gift, coming soon</span><h2 id="freebie-title">Free meal-planning page</h2><p>This optional space is ready for your future free recipe guide, weekly meal planner, or holiday checklist. Add your download link here when the free resource is ready.</p></div>
+          <div class="freebie-actions"><span class="btn btn-disabled" aria-disabled="true">Free guide coming soon</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container">
+        <span class="eyebrow">Ready to explore?</span>
+        <h2>Find your next favorite cookbook, planner, or printable guide.</h2>
+        <p>Visit the full Etsy collection to see current product details, previews, and availability.</p>
+        <a class="btn btn-primary" href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">Shop ZizoDigitalStudio on Etsy <span class="arrow">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a class="brand" href="#top"><span class="brand-mark">Z</span>ZizoDigitalStudio</a><p>Recipes, meal plans, printable guides, and practical digital tools for a better kitchen and happier days.</p></div>
+        <div><h3 class="footer-title">Explore</h3><div class="footer-links"><a href="#christmas">Christmas</a><a href="#cookbooks">Cookbooks</a><a href="#planners">Planners</a><a href="#about">About</a></div></div>
+        <div><h3 class="footer-title">Shop</h3><div class="footer-links"><a href="https://zizodigitalstudio.etsy.com" target="_blank" rel="noopener">Etsy shop ↗</a><!-- Add Payhip, Pinterest, or Facebook links here when ready. --><a href="#products">Featured products</a><a href="#why">Why shop with us</a></div></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> ZizoDigitalStudio. All rights reserved.</span><span>Digital products only · No physical item is shipped</span></div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton=document.querySelector('.menu-btn');
+    const nav=document.querySelector('nav');
+    menuButton.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));menuButton.textContent=open?'×':'☰'});
+    nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{nav.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.textContent='☰'}));
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
